@@ -5,13 +5,12 @@
 
 data class Product(val nama: String, val harga: Int, val stok: Int)
 
-fun produkDiAtasHarga(produk: List<Product>, minHarga: Int): List<String> {
-    // TODO 1: Saring (filter) produk yang harga-nya > minHarga
-    // TODO 2: Urutkan (sortedBy) hasil saringan dari harga termurah
-    // TODO 3: Ubah (map) menjadi List<String> berisi nama produk saja
-
-    return emptyList()
-}
+    fun produkDiAtasHarga(produk: List<Product>, minHarga: Int): List<String> {
+        return produk
+        .filter{it.harga > minHarga}
+        .sortedBy{it.harga}
+        .map{it.nama}
+    }
 
 fun main() {
     val katalog = listOf(
@@ -25,5 +24,4 @@ fun main() {
     val hasil = produkDiAtasHarga(katalog, 100_000)
     println("Produk dengan harga di atas Rp100.000 (termurah dulu):")
     println(hasil)
-    // Expected: [Webcam HD, Keyboard Mechanical, Monitor 24 inch]
 }
