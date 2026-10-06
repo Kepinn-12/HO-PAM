@@ -133,7 +133,7 @@ Setiap kriteria dinilai dengan rubrik empat level: **Sangat baik** (85–100), *
 
 ### 00 Kotlin Dasar (syarat ikut proyek)
 
-`00 Kotlin Dasar/` berisi 13 topik slide dan hands-on Kotlin dasar (Kotlin/JVM biasa, bukan KMP) untuk memperkuat fondasi Kotlin. Materi ini dikerjakan mandiri di luar jam kuliah.
+`00 Kotlin Dasar/` berisi 13 topik slide dan hands-on Kotlin dasar (Kotlin/JVM biasa, bukan KMP) untuk memperkuat fondasi Kotlin. Materi ini dikerjakan mandiri di luar jam kuliah. Slide di folder ini diambil dari materi kuliah Kotlin yang dikembangkan oleh JetBrains, sesuai keterangan *@kotlin | Developed by JetBrains* di setiap slide. Hands-on-nya disusun untuk mata kuliah ini.
 
 **Seluruh hands-on Kotlin Dasar (13 topik × 3 latihan) wajib diselesaikan oleh mahasiswa yang ingin mengikuti proyek kelompok di pertemuan 11–16.** Hands-on ini tidak masuk perhitungan nilai, tetapi menjadi syarat ikut proyek. Ketentuan lengkapnya ada di [`00 Kotlin Dasar/README.md`](00%20Kotlin%20Dasar/README.md).
 
@@ -224,4 +224,14 @@ Cara memakainya: baca langkah-langkahnya sebelum kelas, kerjakan latihan di `02 
 
 ## Kredit
 
-Template slide yang dipakai di `01 Slide/` dan tema modul di `03 Modul/` adalah ciptaan [iwawiwi](https://github.com/iwawiwi).
+- **Template slide**: template yang dipakai di `01 Slide/` dan tema modul di `03 Modul/` adalah ciptaan [iwawiwi](https://github.com/iwawiwi).
+- **Slide Kotlin Dasar**: slide di `00 Kotlin Dasar/` diambil dari materi kuliah Kotlin yang dikembangkan oleh [JetBrains](https://kotlinlang.org), pembuat bahasa Kotlin. Hak atas materi tersebut tetap milik JetBrains.
+- **Dokumentasi resmi**: contoh dan penjelasan di slide, modul, dan hands-on banyak merujuk dokumentasi Kotlin Multiplatform, Compose Multiplatform, Ktor, SQLDelight, Koin, Android Developers, dan Gemini API. Tautannya ada di bagian Bacaan lanjut setiap modul.
+
+## Penyusunan materi dengan bantuan AI
+
+Materi berbasis proyek di repo ini, yaitu slide pertemuan 1–16, modul belajar, hands-on, rubrik, dan contoh aplikasi LaporKampus, disusun dengan bantuan AI (Claude dari Anthropic). AI dipakai untuk menyusun draf penjelasan, contoh kode, perumpamaan, soal tebakan, dan rubrik berdasarkan RPS mata kuliah ini.
+
+Seluruh hasilnya ditinjau, disesuaikan, dan menjadi tanggung jawab pengajar. Capaian, bobot, dan indikator penilaian tetap mengikuti RPS. Meski begitu, sebagian kode belum diuji di semua platform. Kalau menemukan kode yang tidak berjalan atau penjelasan yang keliru, laporkan lewat Issues di repo ini atau sampaikan di kelas.
+
+Ketentuan yang sama berlaku untuk mahasiswa: bantuan AI boleh dipakai di latihan dan proyek, selama kalian memahami setiap baris yang dikumpulkan dan bisa menjelaskannya saat observasi maupun tes lisan.
