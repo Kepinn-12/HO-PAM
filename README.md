@@ -6,7 +6,7 @@ Kelas ini **tanpa UTS**. Pertemuan 1 sampai 10 adalah materi dengan latihan yang
 
 ## Identitas Mata Kuliah
 
-| DATA | DEKSRIPSI |
+| DATA | DESKRIPSI |
 |---|---|
 | Nama | Pengembangan Aplikasi Mobile |
 | Kode | IF25-22017 |
@@ -60,6 +60,8 @@ Kolom **Minggu RPS** menunjukkan minggu RPS yang menjadi sumber setiap pertemuan
 | 15 | 15 | CPMK0501, CPMK0502, CPMK0503 | Rilis, dokumentasi, dan persiapan demo | Formatif, gladi Demo Day | — |
 | 16 | 15 (jadwal UAS) | CPMK0501, CPMK0502, CPMK0503 | **Demo Day** | Tes lisan final: demo, live code review, dan tanya jawab | 35% |
 
+Setiap pertemuan 1–10 punya tiga bahan yang saling melengkapi: slide di `01 Slide/` untuk kelas, hands-on di `02 Hands-on/` untuk latihan yang diobservasi, dan modul di `03 Modul/` untuk belajar mandiri sebelum atau sesudah kelas.
+
 Laporan hasil proyek (5%) dibagikan di pertemuan 9 dan dikumpulkan sebelum pertemuan 16.
 
 Untuk mengikuti proyek kelompok, mahasiswa wajib menyelesaikan seluruh hands-on di `00 Kotlin Dasar/` (lihat [Struktur Repo](#00-kotlin-dasar-syarat-ikut-proyek)).
@@ -104,6 +106,7 @@ Setiap kriteria dinilai dengan rubrik empat level: **Sangat baik** (85–100), *
 3. Android Studio
 4. Dokumentasi Kotlin
 5. Dokumentasi API OpenAI/Gemini
+6. Modul belajar Pertemuan 1–10 di `03 Modul/`
 
 ## Media Pembelajaran
 
@@ -117,6 +120,7 @@ Setiap kriteria dinilai dengan rubrik empat level: **Sangat baik** (85–100), *
 ├── 00 Kotlin Dasar/                        # Kotlin dasar (slide + hands-on), syarat ikut proyek
 ├── 01 Slide/                               # slide PDF pertemuan 1–16
 ├── 02 Hands-on/                            # proyek hands-on KMP pertemuan 1–10
+├── 03 Modul/                               # modul belajar mandiri pertemuan 1–10
 ├── Kontrak Kuliah PAM IF25-22017.pdf
 ├── Rencana Pembelajaran Semester.pdf
 └── README.md
@@ -162,7 +166,7 @@ Folder `01 Slide/` berisi slide PDF untuk ke-16 pertemuan:
 | `P15 Rilis dan dokumentasi.pdf` | 15 |
 | `P16 Demo Day.pdf` | 16 |
 
-Seluruh slide memakai aplikasi kelas yang sama, **LaporKampus**, sebagai contoh berjalan dari pertemuan ke pertemuan.
+Seluruh slide memakai aplikasi kelas yang sama, **LaporKampus**, sebagai contoh berjalan dari pertemuan ke pertemuan. Tampilan slide memakai template ciptaan [iwawiwi](https://github.com/iwawiwi).
 
 ### 02 Hands-on (Pertemuan 1–10)
 
@@ -189,3 +193,35 @@ Catatan:
 - Proyek belum di-build atau diverifikasi penuh, karena lingkungan pembuatannya tidak punya Android SDK atau Xcode. Lakukan Gradle sync di Android Studio sebelum dipakai di kelas.
 
 **Solusi tidak ikut di-commit.** Setiap folder hands-on punya subfolder atau modul `solusi/` (atau `handson{n}-solusi/`) berisi jawaban lengkap. Folder ini di-`.gitignore` di tiap proyek, jadi mahasiswa yang clone repo hanya mendapat soal `latihan/`. Jawaban dipegang dan dibagikan terpisah oleh pengajar.
+
+### 03 Modul (Pertemuan 1–10)
+
+Folder `03 Modul/` berisi modul belajar mandiri untuk pertemuan 1 sampai 10. Isinya mengikuti slide, tetapi ditulis lebih pelan dan lebih lengkap supaya bisa dipelajari sendiri di rumah, termasuk oleh mahasiswa yang berhalangan hadir.
+
+| File | Pertemuan | Hands-on yang dipakai |
+|---|---|---|
+| [`Modul 01 - Kenalan dengan KMP dan Siapkan Alat.pdf`](03%20Modul/Modul%2001%20-%20Kenalan%20dengan%20KMP%20dan%20Siapkan%20Alat.pdf) | 1 | `P1 - Pengenalan MK dan Setup Environment - Hands-on/` |
+| [`Modul 02 - Model Data Coroutines dan Flow.pdf`](03%20Modul/Modul%2002%20-%20Model%20Data%20Coroutines%20dan%20Flow.pdf) | 2 | `P2 - Advanced Kotlin Coroutines Flow - Hands-on/` |
+| [`Modul 03 - Dasar Compose Multiplatform.pdf`](03%20Modul/Modul%2003%20-%20Dasar%20Compose%20Multiplatform.pdf) | 3 | `P3 - Compose Multiplatform Basics - Hands-on/` |
+| [`Modul 04 - State dan MVVM.pdf`](03%20Modul/Modul%2004%20-%20State%20dan%20MVVM.pdf) | 4 | `P4 - State Management MVVM - Hands-on/` |
+| [`Modul 05 - Navigasi Antar Layar.pdf`](03%20Modul/Modul%2005%20-%20Navigasi%20Antar%20Layar.pdf) | 5 | `P5 - Navigasi Antar Layar - Hands-on/` |
+| [`Modul 06 - Networking REST API dengan Ktor.pdf`](03%20Modul/Modul%2006%20-%20Networking%20REST%20API%20dengan%20Ktor.pdf) | 6 | `P6 - Networking REST API - Hands-on/` |
+| [`Modul 07 - Penyimpanan Lokal dan Offline-first.pdf`](03%20Modul/Modul%2007%20-%20Penyimpanan%20Lokal%20dan%20Offline-first.pdf) | 7 | `P7 - Local Data Storage - Hands-on/` |
+| [`Modul 08 - Fitur Khusus Platform.pdf`](03%20Modul/Modul%2008%20-%20Fitur%20Khusus%20Platform.pdf) | 8 | `P8 - Platform Specific Features - Hands-on/` |
+| [`Modul 09 - Integrasi AI dengan Gemini.pdf`](03%20Modul/Modul%2009%20-%20Integrasi%20AI%20dengan%20Gemini.pdf) | 9 | `P9 - Integrasi AI API - Hands-on/` |
+| [`Modul 10 - Testing Dependency Injection dan Debugging.pdf`](03%20Modul/Modul%2010%20-%20Testing%20Dependency%20Injection%20dan%20Debugging.pdf) | 10 | `P10 - Testing dan DI - Hands-on/` |
+
+Setiap modul disusun dengan urutan yang sama, jadi cukup dibaca dari awal sampai akhir:
+
+1. **Tentang modul ini**: capaian, CPMK, dan yang perlu disiapkan.
+2. **Masalah pembuka**: masalah LaporKampus yang dijawab di pertemuan itu.
+3. **Langkah 1 sampai 10**: konsep dibahas berurutan, masing-masing dengan contoh kode yang bisa dijalankan, perumpamaan sehari-hari, serta kotak **Tebak dulu** dan **Jawaban**.
+4. **Latihan mandiri**: petunjuk untuk setiap latihan di `02 Hands-on/`, rubrik observasi, dan tabel error yang sering muncul.
+5. **Bawa ke proyekmu**: penerapan di proyek kelompok dan checkpoint mingguan.
+6. **Rangkuman, Cek pemahaman** dengan kunci jawaban, dan **Bacaan lanjut**.
+
+Cara memakainya: baca langkah-langkahnya sebelum kelas, kerjakan latihan di `02 Hands-on/` dengan petunjuk dari bagian Latihan mandiri, lalu jawab Cek pemahaman tanpa melihat modul untuk menguji diri sendiri. Contoh kode di modul adalah bagian dari aplikasi LaporKampus, jadi untuk proyek kelompok sesuaikan nama kelas dan datanya dengan tema masing-masing.
+
+## Kredit
+
+Template slide yang dipakai di `01 Slide/` dan tema modul di `03 Modul/` adalah ciptaan [iwawiwi](https://github.com/iwawiwi).
