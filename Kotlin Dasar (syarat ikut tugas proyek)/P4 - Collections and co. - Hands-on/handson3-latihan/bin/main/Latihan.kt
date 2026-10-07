@@ -19,8 +19,6 @@ fun prosesDenganSequence(data: List<Int>): List<Int> {
     .map {it * it}
     .take(5)
     .toList()
-
-
 }
 
 fun main() {
