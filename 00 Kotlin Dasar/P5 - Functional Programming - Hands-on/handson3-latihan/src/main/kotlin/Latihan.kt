@@ -1,18 +1,19 @@
-// Hands-on 3: Closure — Counter Factory
+// Hands-on 3: Closure â Counter Factory
 // Tugas: Implementasikan `makeCounter()` yang mengembalikan sebuah fungsi
 // closure. Setiap kali closure tersebut dipanggil, ia harus mengembalikan
 // angka berikutnya (1, 2, 3, ...) dengan MENGINGAT state count-nya sendiri
 // di luar scope fungsi `makeCounter`.
 //
 // CATATAN: File ini SENGAJA belum bisa di-compile sampai kamu melengkapi
-// semua TODO di bawah — itu normal untuk latihan ini!
+// semua TODO di bawah â itu normal untuk latihan ini!
 
 fun makeCounter(): () -> Int {
-    // TODO 1: Deklarasikan `var count` bertipe Int, mulai dari 0.
-    // Variabel ini akan "ditangkap" (captured) oleh closure di bawah.
-
-    // TODO 2: Kembalikan sebuah lambda `() -> Int` yang menambah `count`
-    // lalu mengembalikan nilai barunya.
+    var count : Int = 0
+    return {
+        count += 1
+        count
+    }
+    
 }
 
 fun main() {
@@ -23,6 +24,6 @@ fun main() {
     println(counterA()) // 2
     println(counterA()) // 3
 
-    println(counterB()) // 1 (counterB independen dari counterA)
+    println(counterB()) // 1 
     println(counterB()) // 2
 }
