@@ -1,5 +1,19 @@
-# Tool/session state (oh-my-claudecode, dsb) — bukan bagian dari materi
-.omc/
+# Gradle
+.gradle/
+build/
 
-# OS cruft
-.DS_Store
+# Kotlin/Java compiled files
+bin/
+out/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Android Studio
+.externalNativeBuild/
+.cxx/
+
+# Build output
+**/build/
+**/bin/
