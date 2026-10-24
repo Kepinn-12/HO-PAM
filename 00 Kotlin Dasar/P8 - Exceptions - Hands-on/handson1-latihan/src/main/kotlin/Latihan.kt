@@ -4,11 +4,18 @@
 
 fun safeDivide(a: Int, b: Int): Int {
     // TODO 1: Bungkus pembagian a / b di dalam blok try
+    try{
+        val pembagian : Int? = a / b
+    } catch (e : ArithmeticException){
     // TODO 2: Tangkap ArithmeticException, cetak pesan error yang jelas,
     //         lalu kembalikan 0 sebagai nilai default
+        println("Error:  pembagian dengan nol tidak diperbolehkan (b = $b)")
+        0
+    } finally{
     // TODO 3: Di blok finally, cetak "safeDivide($a, $b) selesai diproses"
     //         (finally HARUS tetap jalan baik sukses maupun error)
-
+    println("safeDivide($a, $b) setelah diproses")
+    }
     return a / b // <-- baris ini akan melempar ArithmeticException saat b == 0
 }
 

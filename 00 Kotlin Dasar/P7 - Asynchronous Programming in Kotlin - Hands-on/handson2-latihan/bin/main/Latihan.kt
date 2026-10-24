@@ -22,12 +22,16 @@ fun main() = runBlocking {
 
     // TODO 1: Jalankan writeAccessLog("Checkout dimulai") dengan launch
     //         (kita tidak butuh return value-nya).
+    writeAccessLog("Checkout dimulai")
 
     // TODO 2: Jalankan calculateTotalPrice(prices) dengan async, simpan
     //         Deferred<Int>-nya ke sebuah variabel.
 
+    val hasil : Deferred<Int> = async {calculateTotalPrice(prices)}
+
     // TODO 3: Ambil hasil total dari Deferred tersebut dengan await(),
     //         lalu cetak "Total belanja: Rp<total>".
 
-    // Kode kamu di sini...
+    val total = hasil.await()
+    println("Total belanja: Rp$total")
 }

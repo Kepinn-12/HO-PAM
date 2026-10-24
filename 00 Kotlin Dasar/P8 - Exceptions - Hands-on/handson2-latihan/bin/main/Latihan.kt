@@ -4,7 +4,7 @@
 
 // TODO 1: Buat class InsufficientBalanceException yang meng-extend Exception
 //         dan menerima parameter message: String
-// class InsufficientBalanceException(...) : ...
+class InsufficientBalanceException( message : String ) : Exception(message)
 
 class BankAccount(private val owner: String, startBalance: Double) {
     var balance: Double = startBalance
@@ -21,7 +21,12 @@ class BankAccount(private val owner: String, startBalance: Double) {
         // TODO 2: Jika amount > balance, lempar InsufficientBalanceException
         //         dengan pesan yang menyebutkan nama pemilik, saldo, dan
         //         jumlah yang diminta.
+        if (amount > balance ){
+            throw InsufficientBalanceException("Saldo $owner tidak cukup, Saldo: $balance, diminta: $amount")
+        }
+        
         // TODO 3: Jika cukup, kurangi balance dengan amount.
+        balance -= amount 
     }
 }
 
@@ -32,8 +37,14 @@ fun main() {
     println("Saldo setelah deposit: ${account.balance}")
 
     // TODO 4: Panggil account.withdraw(500_000.0) di dalam try-catch,
+    try{
+        account.withdraw(500_000.0)
+    }
     //         tangkap InsufficientBalanceException secara spesifik dan
     //         cetak pesan errornya (JANGAN biarkan program crash).
+    catch(e: InsufficientBalanceException){
+        println("Gagal Menarik: ${e.message}")
+    }
 
     account.withdraw(30_000.0)
     println("Saldo akhir: ${account.balance}")

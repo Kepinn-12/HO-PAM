@@ -15,7 +15,9 @@ class Counter {
 
     fun increment() {
         // TODO 1: Bungkus baris di bawah supaya thread-safe
-        c++
+        synchronized(this){
+            c++
+        }
     }
 
     fun value(): Int {
