@@ -22,7 +22,7 @@ fun main() = runBlocking {
     // 3. Tampilkan setiap warning dengan collect
 
     temperatureSensor()
-        // .filter { ... }
-        // .map { ... }
-        // .collect { ... }
+        .filter { temp -> temp > 30 }
+        .map { temp -> "⚠  WARNING: Suhu tinggi terdeteksi: ${temp}°C"}
+        .collect { warning -> println(warning)}
 }
