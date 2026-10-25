@@ -16,13 +16,13 @@ tasks.register("printProjectInfo") {
 
     doLast {
         // TODO 1: Cetak nama project ini lewat properti `project.name`.
-        //   Contoh: println("Nama project: " + project.name)
+        println("Nama project: " + project.name)
 
         // TODO 2: Cetak versi project ini lewat properti `project.version`.
-        //   Contoh: println("Versi project: " + project.version)
+        println("Versi project: " + project.version)
 
         // TODO 3: Cetak versi Gradle yang sedang menjalankan build ini
         //   lewat `gradle.gradleVersion`.
-        //   Contoh: println("Versi Gradle: " + gradle.gradleVersion)
+        println("Versi Gradle: " + gradle.gradleVersion)
     }
 }

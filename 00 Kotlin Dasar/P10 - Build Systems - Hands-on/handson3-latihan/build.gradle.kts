@@ -10,6 +10,6 @@
 // mavenCentral() (sudah didefinisikan di root build.gradle.kts) dan
 // menaruhnya di compile classpath module ini.
 
-// dependencies {
-//     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
-// }
+dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
+}
