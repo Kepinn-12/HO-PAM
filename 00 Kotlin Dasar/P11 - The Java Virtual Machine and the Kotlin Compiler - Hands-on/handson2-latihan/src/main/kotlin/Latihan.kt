@@ -21,8 +21,9 @@ fun factorialBiasa(n: Long, acc: Long = 1): Long {
 // TODO 2: Pastikan bentuknya sama seperti factorialBiasa() di atas —
 //         syarat tailrec: pemanggilan rekursif harus jadi ekspresi TERAKHIR
 //         yang dieksekusi (tidak boleh ada operasi lain setelah hasil rekursi)
-fun factorialTailrec(n: Long, acc: Long = 1): Long {
-    TODO("Lengkapi implementasi factorialTailrec() dengan pola yang sama seperti factorialBiasa()")
+tailrec fun factorialTailrec(n: Long, acc: Long = 1): Long {
+    if (n <= 1) return acc
+    return factorialTailrec(n-1, acc*n  )
 }
 
 fun main() {

@@ -15,9 +15,10 @@
 
 // TODO 1: Tambahkan modifier `inline` pada fungsi ini
 // TODO 2: Ubah <T> menjadi <reified T> agar T bisa dipakai di `is` check
-fun <T> isType(value: Any): Boolean {
+
+inline fun <reified T> isType(value: Any): Boolean {
     // TODO 3: Ganti baris di bawah dengan: return value is T
-    TODO("Lengkapi implementasi isType()")
+    return value is T
 }
 
 fun main() {
