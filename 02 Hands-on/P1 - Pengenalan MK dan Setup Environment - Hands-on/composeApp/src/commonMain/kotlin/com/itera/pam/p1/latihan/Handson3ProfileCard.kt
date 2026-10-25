@@ -17,11 +17,24 @@ import androidx.compose.ui.unit.dp
 fun Handson3Screen() {
     // TODO 1: Bungkus semua konten dengan:
     //         Card(modifier = Modifier.fillMaxWidth().padding(16.dp)) { ... }
+
     // TODO 2: Di dalam Card, buat Column(modifier = Modifier.padding(16.dp))
     // TODO 3: Di dalam Column, tambahkan Text() untuk nama kamu
     // TODO 4: Tambahkan Text() untuk NIM kamu
     // TODO 5: Tambahkan Row { } berisi Text("Platform: ") dan
     //         Text(getPlatformName()) (import com.itera.pam.p1.getPlatformName)
+
+    Card(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+        Column(modifier = Modifier.padding(16.dp)){
+            Text(text = "Jhon Kevin Tambun")
+            Text(text = "124140073")
+            Row{
+                Text("Platform : ")
+                Text(getPlatformName())
+            }
+        }
+
+    }
 
     Text(
         "Belum diimplementasikan — lengkapi TODO 1-5 di atas",

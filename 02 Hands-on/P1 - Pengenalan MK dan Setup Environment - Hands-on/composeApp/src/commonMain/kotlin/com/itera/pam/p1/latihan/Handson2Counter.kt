@@ -19,16 +19,17 @@ fun Handson2Screen() {
     // TODO 1: Buat state `count` dengan nilai awal 0:
     //         var count by remember { mutableStateOf(0) }
     // (butuh import androidx.compose.runtime.getValue/setValue/mutableStateOf/remember)
+    var count by remember { mutableStateOf(0) }
 
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Hands-on 2: Counter")
-        Text("Nilai: ???") // TODO 2: ganti "???" dengan nilai count
+        Text("Nilai: $count") // TODO 2: ganti "???" dengan nilai count
 
         Row {
-            Button(onClick = { /* TODO 3: tambah count */ }) {
+            Button(onClick = { count++ }) {
                 Text("+")
             }
-            Button(onClick = { /* TODO 4: kurangi count */ }) {
+            Button(onClick = { count-- }) {
                 Text("-")
             }
         }
