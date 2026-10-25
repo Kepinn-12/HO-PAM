@@ -13,7 +13,11 @@ import kotlin.reflect.full.findAnnotation
 //         Jangan lupa @Target(AnnotationTarget.FIELD) dan
 //         @Retention(AnnotationRetention.RUNTIME) — tanpa RUNTIME,
 //         annotation tidak akan terbaca saat reflection!
-// annotation class Required
+
+@Target(AnnotationTarget.FIELD)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class Required
+
 
 data class RegistrasiForm(
     @Required val nama: String,
@@ -31,7 +35,15 @@ fun validate(obj: Any): List<String> {
     // TODO 4: Jika beranotasi @Required, ambil nilainya dengan property.getter.call(obj)
     // TODO 5: Jika nilai null ATAU (String dan blank), tambahkan property.name ke `gagal`
 
-    // Kode kamu di sini...
+    obj::class.memberProperties.forEach{
+        val wajib = property.javaField?.getAnnotation(Required::class.java) != null)
+        if (wajib){
+            val nilai = property.getter.call(obj)
+			if (nilai == null || (nilai is String && nilai.isBlank()) ){
+           		gagal.add(property.name)
+        	}
+        }
+    }
 
     return gagal
 }
