@@ -23,6 +23,20 @@ fun ProdukItem(produk: Produk) {
     //         Box(modifier = Modifier.size(80.dp).background(produk.warna))
     // TODO 4: Tambahkan Column(modifier = Modifier.padding(start = 12.dp)) berisi
     //         Text(produk.nama) dan Text(produk.harga, color = Color.Gray)
+
+    Card(modifier = Modifier.fillMaxWidth().padding(8.dp)){
+        Row(modifier = Modifier.padding(8.dp)) {
+            Box(modifier = Modifier.size(80.dp).background(produk.warna))
+
+            Column(modifier = Modifier.padding(start = 12.dp)) {
+                Text(text = produk.nama)
+                Text(
+                    text = produk.harga,
+                    color = Color.Gray
+                )
+            }
+        }
+    }
 }
 
 @Composable

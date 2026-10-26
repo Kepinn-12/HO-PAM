@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+
 // Hands-on 2: Login Form (lihat slide "P3 - Compose Multiplatform Basics.pdf" hal. 31)
 // Tugas: Buat form login dengan username, password, dan tombol login.
 
@@ -25,12 +26,37 @@ fun LoginForm(onLogin: (String, String) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // TODO 1: Text judul "Login"
+        Text(
+            text = "Login"
+        )
         // TODO 2: OutlinedTextField untuk username:
         //         value = username, onValueChange = { username = it }, label = { Text("Username") }
+        OutlinedTextField(
+            value = username,
+            onValueChange = { username = it },
+            label = {Text("Username")}
+        )
+
         // TODO 3: OutlinedTextField untuk password, tambahkan:
         //         visualTransformation = PasswordVisualTransformation()
         //         (butuh import androidx.compose.ui.text.input.PasswordVisualTransformation)
+
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            visualTransformation = PasswordVisualTransformation(),
+            label = {Text("Password")}
+        )
         // TODO 4: Button "Login" dengan onClick = { onLogin(username, password) }
+
+        Button(
+            onClick = {
+                onLogin(username, password)
+            }{
+                Text(text = "Login")
+            }
+        )
+
     }
 }
 

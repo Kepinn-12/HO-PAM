@@ -8,6 +8,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
 
 // Hands-on 1: ProfileCard (lihat slide "P3 - Compose Multiplatform Basics.pdf" hal. 30)
 // Tugas: Buat komponen ProfileCard dengan avatar, nama, dan bio.
@@ -22,6 +24,7 @@ fun ProfileCard(name: String, bio: String) {
             modifier = Modifier.padding(16.dp)
             // TODO 1: tambahkan verticalAlignment = Alignment.CenterVertically
             // (butuh import androidx.compose.ui.Alignment)
+            verticalAlignment = Alignment.CenterVertically
         ) {
             // TODO 2: Tambahkan avatar bulat, misalnya:
             //         Box(
@@ -31,6 +34,21 @@ fun ProfileCard(name: String, bio: String) {
             // TODO 3: Tambahkan Column(modifier = Modifier.padding(start = 12.dp)) berisi:
             //         - Text(name) dengan fontWeight = FontWeight.Bold
             //         - Text(bio) dengan color = Color.Gray
+                Box(
+                    modifier = Modifier.size(48.dp).background(Color.Gray, CircleShape),
+                    contentAlignment = Alignment.Center
+                ) { Icon(Icons.Default.Person, contentDescription = null) }
+
+                Column(modifier = Modifier.padding(start = 12.dp)){
+                    Text (
+                        text = name,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text (
+                        text = bio,
+                        color = Color.Gray
+                    )
+                }
         }
     }
 }
