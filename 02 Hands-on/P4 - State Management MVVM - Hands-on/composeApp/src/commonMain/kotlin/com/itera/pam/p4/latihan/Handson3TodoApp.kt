@@ -41,16 +41,36 @@ class TodoViewModel : ViewModel() {
 
     fun onInputChange(text: String) {
         // TODO: update _uiState.input dengan `text`, gunakan _uiState.update { it.copy(input = text) }
+        _uiState.update { it.copy(input = text) }
     }
 
     fun addTodo() {
-        // TODO: tambahkan Todo baru ke uiState.todos dari uiState.input (id boleh pakai todos.size),
-        //       lalu kosongkan input. Jangan tambahkan jika input blank.
+        _uiState.update{ state ->
+            if (state.input.isBlank()){
+                state
+            }else{
+                state.copy(
+                    todos = state.todos + Todo(
+                        id = state.todos.size,
+                        text = state.todos.size,
+                        text = state.input.trim(),
+                        done = false
+                    ),
+                    input = ""
+                )
+            }
+        }
     }
 
     fun toggleTodo(id: Int) {
-        // TODO: toggle `done` untuk Todo dengan id yang cocok
-        //       (map list, ganti item yang id-nya sama dengan copy(done = !done))
+        _uiState.update{state ->
+            state.copy(
+                todos = state.todos.map{todo ->
+                    if(todo.id == id) todo.copy(done = !todo.done) else todo
+                }
+            )
+        }
+
     }
 }
 
@@ -63,10 +83,33 @@ fun Handson3Screen(viewModel: TodoViewModel = viewModel { TodoViewModel() }) {
         Text("Latihan 3: Todo App dengan ViewModel")
         Text("Belum diimplementasikan — lengkapi TODO di TodoViewModel dan UI di bawah ini")
 
-        // TODO: Implement UI:
-        //  - OutlinedTextField untuk input (value = uiState.input, onValueChange = viewModel::onInputChange)
-        //  - Button "Tambah" -> viewModel.addTodo()
-        //  - LazyColumn menampilkan uiState.todos, tiap item pakai Row + Checkbox(checked = todo.done,
-        //    onCheckedChange = { viewModel.toggleTodo(todo.id) }) + Text(todo.text)
+        OutlinedTextField(
+            value = uiState.input,
+            onValueChange = viewModel :: onInputChange,
+            label = {Text("Todo baru")},
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Button(
+            onClick = viewModel :: addTodo{
+                Text("Tambah")
+            }
+        )
+
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(4.dp)){
+            items(uiState.todos, key = {it.id }) {todo ->
+                row(verticalAlignment = Alignment.CenterVertically){
+                    Checkbox(
+                        checked = todo.done,
+                        onCheckedChange = { viewModel.toggleTodo(todo.id)}
+                    )
+                    Spacer(modifier = Modifier.witdh(8.dp))
+                    Text(
+                        text = todo.text,
+                        textDecoration = if(todo.done) TextDecoration.lineThrough
+                    )
+                }
+            }
+        }
     }
 }
