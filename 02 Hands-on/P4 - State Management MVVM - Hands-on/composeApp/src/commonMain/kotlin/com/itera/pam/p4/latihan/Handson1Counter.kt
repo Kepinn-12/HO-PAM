@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun Handson1Screen() {
-    // TODO: Deklarasikan state untuk count
-    // var count by remember { mutableStateOf(0) }
+
+     var count by remember { mutableStateOf(0) }
 
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -36,16 +36,22 @@ fun Handson1Screen() {
     ) {
         Text("Latihan 1: Counter App dengan State")
 
-        // TODO: Tampilkan nilai count, contoh: Text("Count: $count")
+        Text (
+            text = "Count: $count"
+        )
 
+        Spacer(modifier = Modifier.height(16.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(onClick = { /* TODO: decrement, jangan sampai < 0 */ }) {
+            Button(
+                onClick = { count-- },
+                enabled = count > 0
+                ){
                 Text("-")
             }
-            Button(onClick = { /* TODO: increment */ }) {
+            Button(onClick = { count++ }) {
                 Text("+")
             }
-            Button(onClick = { /* TODO: reset ke 0 */ }) {
+            Button(onClick = { count = 0 }) {
                 Text("Reset")
             }
         }
