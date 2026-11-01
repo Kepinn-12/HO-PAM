@@ -32,9 +32,6 @@ kotlin {
     jvm("desktop")
 
     sourceSets {
-        val desktopMain by getting
-        val iosMain by getting
-
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -58,10 +55,12 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
-        desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.ktor.client.cio)
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.ktor.client.cio)
+            }
         }
     }
 }

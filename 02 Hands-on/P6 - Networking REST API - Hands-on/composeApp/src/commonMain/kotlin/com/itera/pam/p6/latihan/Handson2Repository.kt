@@ -9,6 +9,12 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 
 // Hands-on 2: Repository Pattern & Loading State
 // Bungkus fetchUsers() (dari Handson1KtorClient.kt) di balik sebuah Repository,
@@ -37,19 +43,37 @@ class UserListStateHolder(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     suspend fun load() {
-        // TODO 1: set _state.value ke UiState.Loading sebelum mulai fetch
-        // TODO 2: panggil repository.getUsers() di dalam try-catch
-        // TODO 3: jika berhasil, set _state.value ke UiState.Success(users)
-        // TODO 4: jika gagal (catch Exception e), set _state.value ke
-        //         UiState.Error(e.message ?: "Terjadi kesalahan")
-        TODO("Lengkapi load(): Loading -> try fetch -> Success/Error")
+
+        _state.value = UiState.Loading
+        try {
+            _state.value = UiState.Success(repository.getUsers())
+        } catch (e : Exception){
+                _state.value = UiState.Error(e.message ?: "Terjadi Kesalahan")
+        }
+
     }
 }
 
 @Composable
 fun Handson2Screen() {
+    val holder = remember { UserListStateHolder() }
+    val state by holder.state.collectAsState()
+
+    LaunchedEffect(Unit) {
+        holder.load()
+    }
+
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Hands-on 2: Repository Pattern & Loading State")
-        Text("Lengkapi TODO di UserListStateHolder.load(), lalu lihat Solusi 2 untuk contoh penggunaannya di Compose.")
+
+        when (val s = state) {
+            is UiState.Loading -> Text("Memuat data...")
+            is UiState.Error -> Text("Error: ${s.message}")
+            is UiState.Success -> LazyColumn {
+                items(s.users) { user ->
+                    Text("${user.id}. ${user.name} (${user.email})")
+                }
+            }
+        }
     }
 }

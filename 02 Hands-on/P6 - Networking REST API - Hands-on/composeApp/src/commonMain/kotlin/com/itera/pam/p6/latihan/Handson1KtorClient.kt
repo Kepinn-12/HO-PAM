@@ -13,6 +13,15 @@ import io.ktor.client.call.body
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import kotlinx.coroutines.delay
+
 
 // Hands-on 1: Ktor Client Dasar & GET Request
 // Endpoint yang dipakai di seluruh hands-on Pertemuan 6:
@@ -25,28 +34,40 @@ data class RemoteUser(
     val name: String,
     val email: String
 )
-
-// TODO 1: Buat HttpClient dengan ContentNegotiation + json() supaya Ktor bisa
-//         otomatis decode response JSON menjadi objek Kotlin.
          val client = HttpClient {
              install(ContentNegotiation) {
                  json(Json { ignoreUnknownKeys = true })
              }
          }
-val client: HttpClient = TODO("Buat HttpClient dengan plugin ContentNegotiation + json()")
 
-// TODO 2: Lakukan GET request ke "https://jsonplaceholder.typicode.com/users"
-//         dan decode response body-nya menjadi List<RemoteUser>.
 suspend fun fetchUsers(): List<RemoteUser> {
-    // Kode kamu di sini...
-    // return client.get("https://jsonplaceholder.typicode.com/users").body()
-    TODO("Panggil client.get(...) lalu .body<List<RemoteUser>>()")
+    delay(2000)
+    return client.get("https://jsonplaceholder.typicode.com/users").body()
 }
 
 @Composable
 fun Handson1Screen() {
+    var users by remember { mutableStateOf<List<RemoteUser>>(emptyList()) }
+    var error by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(Unit) {
+        try {
+            users = fetchUsers()
+        } catch (e: Exception) {
+            error = e.message
+        }
+    }
+
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Hands-on 1: Ktor Client Dasar & GET Request")
-        Text("Lengkapi TODO di Handson1KtorClient.kt, lalu lihat Solusi 1 untuk contoh pemanggilan fetchUsers() dari Composable.")
+        when {
+            error != null -> Text("Error: $error")
+            users.isEmpty() -> Text("Memuat data...")
+            else -> LazyColumn {
+                items(users) { user ->
+                    Text("${user.id}. ${user.name} (${user.email})")
+                }
+            }
+        }
     }
 }
