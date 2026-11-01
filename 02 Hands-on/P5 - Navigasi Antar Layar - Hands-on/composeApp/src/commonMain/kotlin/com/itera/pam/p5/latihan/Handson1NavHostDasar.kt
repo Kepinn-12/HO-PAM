@@ -27,7 +27,7 @@ fun Handson1Screen() {
     }
 
     Text(
-        "Belum diimplementasikan — lengkapi TODO 1-3 di atas",
+        "Screen Awal",
         modifier = Modifier.padding(16.dp)
     )
 }

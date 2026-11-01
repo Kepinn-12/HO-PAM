@@ -1,17 +1,19 @@
 package com.itera.pam.p5.latihan
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+//import androidx.navigation.NavDestination.Companion.hierarchy
 
 // Hands-on 3: Bottom Navigation
 // Tugas: buat 3 tab (Home/Search/Profil) dengan NavigationBar yang terhubung
@@ -51,14 +53,13 @@ fun Handson3Screen() {
                             // pindah tab.
                             //
                             // TODO: ganti baris di bawah dengan:
-                            // navController.navigate(tab.route) {
-                            //     popUpTo(navController.graph.findStartDestination().id) {
-                            //         saveState = true
-                            //     }
-                            //     launchSingleTop = true
-                            //     restoreState = true
-                            // }
-                            navController.navigate(tab.route)
+                            navController.navigate(tab.route) {
+                                popUpTo("home") {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
                         },
                         icon = { },
                         label = { Text(tab.label) }

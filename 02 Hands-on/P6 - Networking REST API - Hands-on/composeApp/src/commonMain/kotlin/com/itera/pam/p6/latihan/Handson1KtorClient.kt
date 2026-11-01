@@ -28,11 +28,11 @@ data class RemoteUser(
 
 // TODO 1: Buat HttpClient dengan ContentNegotiation + json() supaya Ktor bisa
 //         otomatis decode response JSON menjadi objek Kotlin.
-//         val client = HttpClient {
-//             install(ContentNegotiation) {
-//                 json(Json { ignoreUnknownKeys = true })
-//             }
-//         }
+         val client = HttpClient {
+             install(ContentNegotiation) {
+                 json(Json { ignoreUnknownKeys = true })
+             }
+         }
 val client: HttpClient = TODO("Buat HttpClient dengan plugin ContentNegotiation + json()")
 
 // TODO 2: Lakukan GET request ke "https://jsonplaceholder.typicode.com/users"
