@@ -24,7 +24,6 @@ class CatatanRepository(private val database: AppDatabase) {
             .selectAll()
             .asFlow()
             .mapToList(kotlinx.coroutines.Dispatchers.Default)
-
     }
 
     fun tambah(judul: String, isi: String) {
