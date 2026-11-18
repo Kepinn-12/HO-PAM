@@ -9,6 +9,8 @@ import androidx.compose.ui.unit.dp
 import com.itera.pam.p7.db.AppDatabase
 import com.itera.pam.p7.db.Catatan
 import kotlinx.coroutines.flow.Flow
+import app.cash.sqldelight.coroutines.asFlow
+import app.cash.sqldelight.coroutines.mapToList
 
 // Hands-on 2: SQLDelight — Insert & Query
 // Lengkapi CatatanRepository di bawah agar bisa membaca semua catatan
@@ -18,20 +20,19 @@ import kotlinx.coroutines.flow.Flow
 class CatatanRepository(private val database: AppDatabase) {
 
     fun getAll(): Flow<List<Catatan>> {
-        // TODO 1: import app.cash.sqldelight.coroutines.asFlow dan
-        //         app.cash.sqldelight.coroutines.mapToList, lalu:
-        //         return database.catatanQueries.selectAll()
-        //             .asFlow()
-        //             .mapToList(kotlinx.coroutines.Dispatchers.Default)
-        TODO("Lengkapi getAll()")
+        return database.catatanQueries
+            .selectAll()
+            .asFlow()
+            .mapToList(kotlinx.coroutines.Dispatchers.Default)
+
     }
 
     fun tambah(judul: String, isi: String) {
-        // TODO 2: database.catatanQueries.insertCatatan(judul, isi)
+        database.catatanQueries.insertCatatan(judul, isi)
     }
 
     fun hapus(id: Long) {
-        // TODO 3: database.catatanQueries.deleteById(id)
+        database.catatanQueries.deleteById(id)
     }
 }
 
